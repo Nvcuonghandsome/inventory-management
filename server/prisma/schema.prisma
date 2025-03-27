@@ -24,7 +24,7 @@ model Products {
   name String
   price Float
   rating Float?
-  stockQuanlity Int
+  stockQuantity Int
   Sales Sales[]
   Purchases Purchases[]
 }
@@ -33,7 +33,7 @@ model Sales {
   saleId String @id
   productId String
   timestamp DateTime
-  quanlity Int
+  quantity Int
   unitPrice Float
   totalAmount Float
   product Products @relation(fields: [productId], references: [productId])
@@ -43,7 +43,7 @@ model Purchases {
   purchaseId String @id
   productId String
   timestamp DateTime
-  quanlity Int
+  quantity Int
   unitCost Float
   totalCost Float
   product Products @relation(fields: [productId], references: [productId])
@@ -65,7 +65,7 @@ model SalesSummary {
 
 model PurchaseSummary {
   purchaseSummaryId String @id
-  totalPurchase Float
+  totalPurchased Float
   changePercentage Float?
   date DateTime
 }

@@ -16,7 +16,7 @@ CREATE TABLE "Products" (
     "name" TEXT NOT NULL,
     "price" DOUBLE PRECISION NOT NULL,
     "rating" DOUBLE PRECISION,
-    "stockQuanlity" INTEGER NOT NULL,
+    "stockQuantity" INTEGER NOT NULL,
 
     CONSTRAINT "Products_pkey" PRIMARY KEY ("productId")
 );
@@ -26,7 +26,7 @@ CREATE TABLE "Sales" (
     "saleId" TEXT NOT NULL,
     "productId" TEXT NOT NULL,
     "timestamp" TIMESTAMP(3) NOT NULL,
-    "quanlity" INTEGER NOT NULL,
+    "quantity" INTEGER NOT NULL,
     "unitPrice" DOUBLE PRECISION NOT NULL,
     "totalAmount" DOUBLE PRECISION NOT NULL,
 
@@ -38,7 +38,7 @@ CREATE TABLE "Purchases" (
     "purchaseId" TEXT NOT NULL,
     "productId" TEXT NOT NULL,
     "timestamp" TIMESTAMP(3) NOT NULL,
-    "quanlity" INTEGER NOT NULL,
+    "quantity" INTEGER NOT NULL,
     "unitCost" DOUBLE PRECISION NOT NULL,
     "totalCost" DOUBLE PRECISION NOT NULL,
 
@@ -68,7 +68,7 @@ CREATE TABLE "SalesSummary" (
 -- CreateTable
 CREATE TABLE "PurchaseSummary" (
     "purchaseSummaryId" TEXT NOT NULL,
-    "totalPurchase" DOUBLE PRECISION NOT NULL,
+    "totalPurchased" DOUBLE PRECISION NOT NULL,
     "changePercentage" DOUBLE PRECISION,
     "date" TIMESTAMP(3) NOT NULL,
 
