@@ -1,0 +1,9 @@
+.DS_Store
+
+client/node_modules/
+client/dist/
+client/.next/
+
+server/node_modules/
+server/dist/
+server/.vscode/
