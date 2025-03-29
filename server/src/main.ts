@@ -9,6 +9,10 @@ async function bootstrap() {
       whitelist: true,
     }),
   );
+  app.enableCors({
+    origin: 'http://localhost:3000', // Allow Next.js frontend
+    credentials: true, // Allow cookies/auth headers if needed
+  });
   await app.listen(process.env.PORT ?? 8000);
 }
 bootstrap();

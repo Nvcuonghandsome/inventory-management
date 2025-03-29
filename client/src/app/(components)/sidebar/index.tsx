@@ -1,7 +1,7 @@
 'use client';
 
 import { useAppDispatch, useAppSelector } from '@/app/redux';
-import { setIsSibarCollapsed } from '@/state';
+import { setIsSidebarCollapsed } from '@/state';
 import {
   Archive,
   CircleDollarSign,
@@ -62,7 +62,7 @@ function Sidebar() {
   );
 
   const toggleSidebar = () => {
-    dispatch(setIsSibarCollapsed(!isSidebarCollapsed));
+    dispatch(setIsSidebarCollapsed(!isSidebarCollapsed));
   };
   const sidebarClassNames = `fixed flex flex-col ${
     isSidebarCollapsed ? 'w-0 md:w-16' : 'w-72 md:w-64'

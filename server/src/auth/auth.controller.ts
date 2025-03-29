@@ -1,6 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { AuthDto } from './dto';
+import { LoginDto, SignUpDto } from './dto';
 
 // Define routes
 // Handle request from client to BE
@@ -10,13 +10,13 @@ export class AuthController {
   constructor(private authService: AuthService) {}
 
   @Post('signup')
-  signup(@Body() dto: AuthDto) {
+  signup(@Body() dto: SignUpDto) {
     console.log('dto', dto);
     return this.authService.signup(dto);
   }
 
   @Post('login')
-  login(@Body() dto: AuthDto) {
+  login(@Body() dto: LoginDto) {
     return this.authService.login(dto);
   }
 }
