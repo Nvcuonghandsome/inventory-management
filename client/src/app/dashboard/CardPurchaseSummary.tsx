@@ -1,6 +1,16 @@
 import { useGetDashboardMetricsQuery } from '@/state/api';
 import { TrendingDown, TrendingUp } from 'lucide-react';
 import numeral from 'numeral';
+import {
+  Area,
+  AreaChart,
+  Bar,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
 
 const CardPurchaseSummary = () => {
   const { data, isLoading, isError } = useGetDashboardMetricsQuery();
@@ -31,26 +41,54 @@ const CardPurchaseSummary = () => {
                     ? numeral(lastDataPoint.totalPurchased).format('$0.00a')
                     : 0}
                 </p>
+                {lastDataPoint && (
+                  <p
+                    className={`text-sm ${
+                      lastDataPoint.changePercentage! >= 0
+                        ? 'text-gray-500'
+                        : 'text-red-500'
+                    } flex ml-3`}
+                  >
+                    {lastDataPoint.changePercentage! >= 0 ? (
+                      <TrendingUp className="w-5 h-5 mr-1" />
+                    ) : (
+                      <TrendingDown className="w-5 h-5 mr-1" />
+                    )}
+                    {Math.abs(lastDataPoint.changePercentage!)}%
+                  </p>
+                )}
               </div>
-              {lastDataPoint && (
-                <p
-                  className={`text-xs ${
-                    lastDataPoint.changePercentage! >= 0
-                      ? 'text-gray-500'
-                      : 'text-red-500'
-                  }`}
-                >
-                  {lastDataPoint.changePercentage! >= 0 ? (
-                    <TrendingUp className="w-4 h-4" />
-                  ) : (
-                    <TrendingDown className="w-4 h-4" />
-                  )}
-                  {Math.abs(lastDataPoint.changePercentage!)}%
-                </p>
-              )}
             </div>
 
             {/* CHARTS */}
+            <ResponsiveContainer width="100%" height={200} className="p-2">
+              <AreaChart
+                data={purchaseData}
+                margin={{ top: 0, right: 0, left: -50, bottom: 45 }}
+              >
+                <XAxis dataKey="date" tick={false} axisLine={false} />
+                <YAxis tick={false} tickLine={false} axisLine={false} />
+                <Tooltip
+                  formatter={(value: number) => [
+                    `$${value.toLocaleString('en')}`,
+                  ]}
+                  labelFormatter={(label) => {
+                    const date = new Date(label);
+                    return date.toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    });
+                  }}
+                />
+                <Area
+                  dataKey="totalPurchased"
+                  fill="#8884d8"
+                  stroke="#8884d8"
+                  type="linear"
+                />
+              </AreaChart>
+            </ResponsiveContainer>
           </div>
         </>
       )}
