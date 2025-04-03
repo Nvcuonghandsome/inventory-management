@@ -13,6 +13,6 @@ async function bootstrap() {
     origin: 'http://localhost:3000', // Allow Next.js frontend
     credentials: true, // Allow cookies/auth headers if needed
   });
-  await app.listen(process.env.PORT ?? 8000);
+  await app.listen(process.env.PORT ?? 8000, '0.0.0.0');
 }
 bootstrap();
