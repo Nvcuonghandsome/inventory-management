@@ -10,7 +10,10 @@ async function bootstrap() {
     }),
   );
   app.enableCors({
-    origin: 'http://localhost:3000', // Allow Next.js frontend
+    origin: [
+      'http://localhost:3000',
+      'https://main.d3hokgerfetl68.amplifyapp.com',
+    ],
     credentials: true, // Allow cookies/auth headers if needed
   });
   await app.listen(process.env.PORT ?? 8000, '0.0.0.0');

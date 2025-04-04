@@ -3,7 +3,9 @@
 client/node_modules/
 client/dist/
 client/.next/
+client/.env
 
 server/node_modules/
 server/dist/
 server/.vscode/
+server/.env
