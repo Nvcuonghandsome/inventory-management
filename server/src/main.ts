@@ -13,6 +13,7 @@ async function bootstrap() {
     origin: [
       'http://localhost:3000',
       'https://main.d3hokgerfetl68.amplifyapp.com',
+      'https://main.d3hokgerfetl68.amplifyapp.com/prod',
     ],
     credentials: true, // Allow cookies/auth headers if needed
   });
